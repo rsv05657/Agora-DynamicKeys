@@ -1,5 +1,7 @@
 <?php
 
+namespace Agora\DynamicKey;
+
 $SDK_VERSION = "1";
 
 function getToken($appid, $appcertificate, $account, $validTimeInSeconds){

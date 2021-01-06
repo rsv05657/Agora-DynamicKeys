@@ -1,4 +1,7 @@
 <?php
+
+namespace Agora\DynamicKey;
+
 $version = "005";
 $NO_UPLOAD = "0";
 $AUDIO_VIDEO_UPLOAD = "3";

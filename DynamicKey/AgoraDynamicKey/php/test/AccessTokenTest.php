@@ -1,16 +1,22 @@
 <?php
-include "../src/RtcTokenBuilder.php";
-include "../src/RtmTokenBuilder.php";
+#include "../src/RtcTokenBuilder.php";
+#include "../src/RtmTokenBuilder.php";
 include "TestTool.php";
 
-$appID = "970CA35de60c44645bbae8a215061b33";
-$appCertificate = "5CFd2fd1755d40ecb72977518be15d3b";
-$channelName = "7d72365eb983485397e3e3f9d460bdda";
+include "../vendor/autoload.php";
+
+use Agora\DynamicKey\AccessToken;
+use Agora\DynamicKey\RtcTokenBuilder;
+use Agora\DynamicKey\RtmTokenBuilder;
+use Agora\DynamicKey\Message;
+
+$appID = "7759d2e4ca224a748f8224fc3c616ca9";
+$appCertificate = "840043c641bc4aea8b8815add23141ba";
+$channelName = "testchannel";
 $ts = 1111111;
 $salt = 1;
 $uid = "2882341273";
 $expiredTs = 1446455471;
-
 
 $expected = "006970CA35de60c44645bbae8a215061b33IACV0fZUBw+72cVoL9eyGGh3Q6Poi8bgjwVLnyKSJyOXR7dIfRBXoFHlEAABAAAAR/QQAAEAAQCvKDdW";
 $builder = AccessToken::init($appID, $appCertificate, $channelName, $uid);
@@ -27,9 +33,9 @@ assertEqual($expected, $result2);
 
 //test 2 uid 0 case
 
-$appID = "970CA35de60c44645bbae8a215061b33";
-$appCertificate = "5CFd2fd1755d40ecb72977518be15d3b";
-$channelName = "7d72365eb983485397e3e3f9d460bdda";
+$appID = "7759d2e4ca224a748f8224fc3c616ca9";
+$appCertificate = "840043c641bc4aea8b8815add23141ba";
+$channelName = "testchannel";
 $ts = 1111111;
 $salt = 1;
 $uid = "0";
@@ -47,6 +53,7 @@ assertEqual($expected, $result);
 $builder2 = AccessToken::initWithToken($expected, $appCertificate, $channelName, $uid);
 $result2 = $builder2->build();
 assertEqual($expected, $result2);
+exit;
 
 
 //test 2 uid 0 number case

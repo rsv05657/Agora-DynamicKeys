@@ -1,6 +1,8 @@
 <?php
 
-require_once "AccessToken.php";
+namespace Agora\DynamicKey;
+
+use Agora\DynamicKey\AccessToken;
 
 class RtcTokenBuilder
 {
